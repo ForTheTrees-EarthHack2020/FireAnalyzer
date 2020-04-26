@@ -26,6 +26,32 @@ imagePaths = firePaths + nonFirePaths
 random.shuffle(imagePaths)
 imagePaths = imagePaths[:config.SAMPLE_SIZE]
 
+'''
+impagePaths = path of image
+
+for (i, imagePath) in enumerate(imagePaths):
+	# load the image and clone it
+	image = cv2.imread(imagePath)
+	output = image.copy()
+
+	# resize the input image to be a fixed 128x128 pixels, ignoring
+	# aspect ratio
+	image = cv2.resize(image, (128, 128))
+	image = image.astype("float32") / 255.0
+		
+	# make predictions on the image
+	preds = model.predict(np.expand_dims(image, axis=0))[0]
+	j = np.argmax(preds)
+	label = config.CLASSES[j]
+
+	if label == "Non-Fire":
+		validate the request
+	else:
+		dont
+
+
+
+'''
 # loop over the sampled image paths
 for (i, imagePath) in enumerate(imagePaths):
 	# load the image and clone it
